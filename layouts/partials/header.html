@@ -1,0 +1,58 @@
+<header class="header {{ if site.Params.navbar_fixed }}sticky top-0{{ end }} z-30">
+  <nav class="navbar container">
+    <div class="order-0">
+      <a class="navbar-brand block" href="{{ site.Home.RelPermalink }}">
+        {{ partial "logo" }}
+      </a>
+    </div>
+    
+    <input id="nav-toggle" type="checkbox" class="hidden" />
+    <label for="nav-toggle" class="order-3 cursor-pointer flex items-center lg:hidden text-text-dark dark:text-white lg:order-1">
+      <svg id="show-button" class="h-6 fill-current block" viewBox="0 0 20 20">
+        <title>Menu Open</title>
+        <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
+      </svg>
+      <svg id="hide-button" class="h-6 fill-current hidden" viewBox="0 0 20 20">
+        <title>Menu Close</title>
+        <polygon points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2" transform="rotate(45 10 10)"></polygon>
+      </svg>
+    </label>
+
+    <ul id="nav-menu" class="navbar-nav order-3 hidden lg:flex w-full pb-6 lg:order-1 lg:w-auto lg:space-x-2 lg:pb-0 xl:space-x-8">
+      {{ range site.Menus.main }}
+        <li class="nav-item">
+          <a class="nav-link inline-flex items-center" href="{{ .URL | relLangURL }}">{{ .Name }}</a>
+        </li>
+      {{ end }}
+
+      <li class="mt-4 inline-block lg:hidden">
+        <button onclick="document.getElementById('navModal').style.display='flex'" class="btn btn-outline-primary btn-sm" style="cursor: pointer;">
+          Buy Now
+        </button>
+      </li>
+    </ul>
+
+    <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
+      {{ partial "components/theme-switcher" (dict "Class" "mr-5") }}
+
+      <button onclick="document.getElementById('navModal').style.display='flex'" class="btn btn-outline-primary btn-sm hidden lg:inline-block" style="cursor: pointer;">
+        Buy Now
+      </button>
+    </div>
+  </nav>
+
+  <div id="navModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background-color:rgba(0,0,0,0.8); z-index:9999999; align-items:center; justify-content:center;">
+    <div style="background:white; padding:30px; border-radius:12px; width:90%; max-width:350px; text-align:center; position:relative; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);">
+      
+      <button onclick="document.getElementById('navModal').style.display='none'" style="position:absolute; top:10px; right:15px; font-size:24px; font-weight:bold; color:#333; background:transparent; border:none; cursor:pointer;">&times;</button>
+
+      <h3 style="margin-bottom:20px; font-size:20px; font-weight:bold; color:#111;">Order From</h3>
+
+      <div style="display:flex; flex-direction:column; gap:15px;">
+        <a href="https://www.swiggy.com/instamart/search?custom_back=true&query=grihokon" target="_blank" style="display:flex; align-items:center; justify-content:center; width:100%; padding:14px; background-color:#FC8019; color:white; border-radius:8px; text-decoration:none; font-weight:bold; font-size:16px;">Swiggy Instamart</a>
+        <a href="https://blinkit.com/s/?q=grihokon" target="_blank" style="display:flex; align-items:center; justify-content:center; width:100%; padding:14px; background-color:#F8CB46; color:black; border-radius:8px; text-decoration:none; font-weight:bold; font-size:16px;">Blinkit</a>
+      </div>
+
+    </div>
+  </div>
+</header>

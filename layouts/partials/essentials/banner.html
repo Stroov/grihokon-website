@@ -1,0 +1,70 @@
+<section class="section pt-14">
+  <div class="container">
+    <div class="row justify-center">
+      <div class="lg:col-7 md:col-9 mb-8 text-center">
+        <h1 class="mb-4 text-h3 lg:text-h1">
+          {{ .Params.banner.title | markdownify }}
+        </h1>
+        <p class="mb-8 text-lg">
+          {{ .Params.banner.content | markdownify }}
+        </p>
+
+        <div class="relative z-20">
+          <button onclick="openModal()" class="btn btn-primary">
+            Buy Now
+            <span class="ml-2">→</span>
+          </button>
+        </div>
+
+        <div id="buyModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-70 backdrop-blur-sm transition-opacity">
+          <div class="relative w-full max-w-sm rounded-xl bg-white p-6 shadow-2xl dark:bg-gray-800">
+            
+            <button onclick="closeModal()" class="absolute top-3 right-4 text-2xl font-bold text-gray-500 hover:text-red-500">
+              &times;
+            </button>
+
+            <h3 class="mb-6 text-xl font-bold text-gray-900 dark:text-white">
+              Order From
+            </h3>
+
+            <div class="flex flex-col gap-3">
+              <a href="#" target="_blank" class="flex items-center justify-center rounded-lg bg-[#FC8019] py-3 font-bold text-white transition hover:opacity-90">
+                Swiggy
+              </a>
+
+              <a href="#" target="_blank" class="flex items-center justify-center rounded-lg bg-[#F8CB46] py-3 font-bold text-black transition hover:opacity-90">
+                Blinkit
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <script>
+          function openModal() {
+            const modal = document.getElementById('buyModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+          }
+          function closeModal() {
+            const modal = document.getElementById('buyModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+          }
+          // Close if clicking outside the box
+          window.onclick = function(event) {
+            const modal = document.getElementById('buyModal');
+            if (event.target == modal) {
+              closeModal();
+            }
+          }
+        </script>
+        </div>
+      
+      <div class="col-12">
+        {{ with .Params.banner.image }}
+        <img src="{{ . | absURL }}" alt="banner" class="mx-auto" width="{{$.Params.banner.image_width}}" height="{{$.Params.banner.image_height}}" />
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>

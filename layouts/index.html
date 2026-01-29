@@ -1,0 +1,112 @@
+{{ define "main" }}
+
+  {{ with .Params.banner }}
+    <section class="section pt-14">
+      <div class="container">
+        <div class="row justify-center">
+          <div class="lg:col-7 md:col-9 mb-8 text-center">
+            
+            <h1 class="mb-4 text-h3 lg:text-h1">
+              {{ .title | markdownify }}
+            </h1>
+            
+            <p class="mb-8">
+              {{ .content | markdownify }}
+            </p>
+
+            <div class="relative z-20">
+              <button 
+                onclick="document.getElementById('forceModal').style.display='flex'" 
+                class="btn btn-primary"
+                style="cursor: pointer;">
+                Buy Now <i class="fa fa-arrow-right pl-2"></i>
+              </button>
+            </div>
+
+            <div id="forceModal" 
+                 style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background-color:rgba(0,0,0,0.8); z-index:99999999; align-items:center; justify-content:center;">
+              
+              <div style="background:white; padding:30px; border-radius:12px; width:90%; max-width:350px; text-align:center; position:relative; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);">
+                
+                <button 
+                  onclick="document.getElementById('forceModal').style.display='none'" 
+                  style="position:absolute; top:10px; right:15px; font-size:24px; font-weight:bold; color:#333; background:transparent; border:none; cursor:pointer;">
+                  &times;
+                </button>
+
+                <h3 style="margin-bottom:20px; font-size:20px; font-weight:bold; color:#111;">
+                  Order From
+                </h3>
+
+                <div style="display:flex; flex-direction:column; gap:15px;">
+                  <a href="https://www.swiggy.com/instamart/search?custom_back=true&query=grihokon" target="_blank" 
+                     style="display:flex; align-items:center; justify-content:center; width:100%; padding:14px; background-color:#FC8019; color:white; border-radius:8px; text-decoration:none; font-weight:bold; font-size:16px;">
+                     Swiggy Instamart
+                  </a>
+
+                  <a href="https://blinkit.com/s/?q=grihokon" target="_blank" 
+                     style="display:flex; align-items:center; justify-content:center; width:100%; padding:14px; background-color:#F8CB46; color:black; border-radius:8px; text-decoration:none; font-weight:bold; font-size:16px;">
+                     Blinkit
+                  </a>
+                </div>
+
+              </div>
+            </div>
+            </div>
+
+          <div class="col-12">
+            {{ partial "image" (dict "Src" .image "Alt" "Banner image" "Loading" "eager" "Class" "mx-auto lg:!max-w-[800px]" "DisplayXL" "800x" ) }}
+          </div>
+
+        </div>
+      </div>
+    </section>
+  {{ end }}
+
+
+  {{ range $i, $e:= .Params.features }}
+    <section class="section-sm {{ if (modBool $i 2) }}bg-gradient{{ end }}">
+      <div class="container">
+        <div class="row items-center justify-between">
+          <div class="mb:md-0 {{ if not (modBool $i 2) }}md:order-2{{ end }} md:col-5 mb-6">
+            {{ partial "image" (dict "Src" .image "Alt" "feature image" "DisplayXL" "520x" "DisplayLG" "425x" "DisplayMD" "360x") }}
+          </div>
+          <div class="{{ if not (modBool $i 2) }}md:order-1{{ end }} md:col-7 lg:col-6">
+            <h2 class="mb-4">{{ .title | markdownify }}</h2>
+            <p class="mb-8 text-lg">{{ .content | markdownify }}</p>
+            <ul>
+              {{ range .bulletpoints }}
+                <li class="relative mb-4 pl-6">
+                  <i class="fa fa-check absolute left-0 top-1.5"></i>
+                  {{ . | markdownify }}
+                </li>
+              {{ end }}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  {{ end }}
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Find all "Buy Now" style buttons
+      const headerButtons = document.querySelectorAll('.btn-outline-primary');
+      const modal = document.getElementById('forceModal');
+
+      headerButtons.forEach(btn => {
+        // Remove the old Blinkit link
+        btn.removeAttribute('href');
+        btn.removeAttribute('target');
+        
+        // Make it click the popup instead
+        btn.style.cursor = 'pointer';
+        btn.onclick = function(e) {
+            e.preventDefault();
+            modal.style.display = 'flex';
+        };
+      });
+    });
+  </script>
+
+{{ end }}

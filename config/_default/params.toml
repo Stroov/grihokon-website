@@ -1,0 +1,110 @@
+#################### default parameters ############################
+# favicon module
+favicon = "images/favicon.png"
+
+# logo
+logo = "images/grihokon.jpeg"
+logo_darkmode = "images/grihokon.jpeg"
+logo_width = "160px"
+logo_height = "32px"
+
+
+# fallback text if logo missing
+logo_text = "Grihokon"
+
+# navbar + theme
+navbar_fixed = true
+theme_switcher = true
+theme_default = "system"
+
+# main content sections
+mainSections = ["blog"]
+
+# contact form (we’ll wire later)
+contact_form_action = "#"
+
+# analytics (optional)
+google_tag_manager = ""
+google_adsense = ""
+
+# custom script
+custom_script = ""
+
+# copyright
+copyright = "Grihokon"
+
+# Preloader
+[preloader]
+enable = false
+preloader = ""
+
+# Navigation button (we can rename later)
+[navigation_button]
+enable = true
+label = " Buy Now "
+link = "https://blinkit.com/s/?q=grihokon"
+
+# search
+[search]
+enable = true
+primary_color = "#121212"
+include_sections = ["blog"]
+show_image = true
+show_description = true
+show_tags = true
+show_categories = true
+
+# announcement — disabled for clean UI
+[announcement]
+enable = false
+expire_days = 7
+content = ""
+
+# SEO
+[metadata]
+keywords = ["Grihokon","bottles","oil dispensers","home storage","kitchen containers"]
+description = "Grihokon — everyday bottles, kitchen dispensers and home storage essentials."
+author = "Grihokon"
+twitter = ""
+image = "images/og-image.png"
+
+# site verification
+[site_verification]
+google = ""
+bing = ""
+baidu = ""
+facebook = ""
+mastodon = ""
+
+# cookies
+[cookies]
+enable = false
+expire_days = 60
+content = "This site uses cookies."
+button = "I Accept"
+
+# diagrams (leave default)
+[mermaid]
+js_url = 'https://cdn.jsdelivr.net/npm/mermaid@latest/dist/mermaid.esm.min.mjs'
+
+######################## sidebar widgets #########################
+[widgets]
+sidebar = ["categories", "tags"]
+
+# google map (off for now)
+[google_map]
+enable = false
+map_api_key = ""
+map_latitude = ""
+map_longitude = ""
+map_marker = "images/marker.png"
+
+# Subscription (off)
+[subscription]
+enable = false
+mailchimp_form_action = ""
+mailchimp_form_name = ""
+
+# testimonials / best sellers section
+[testimonial]
+enable = true

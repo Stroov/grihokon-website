@@ -1,0 +1,24 @@
+{
+  "main": [
+    {
+      "name": "facebook",
+      "icon": "fa-brands fa-facebook",
+      "link": "https://facebook.com/"
+    },
+    {
+      "name": "instagram",
+      "icon": "fa-brands fa-instagram",
+      "link": "https://www.instagram.com/grihokon.insta?utm_source=qr&igsh=bDVqMXMzdXN0cHg3"
+    },
+    {
+      "name": "twitter",
+      "icon": "fa-brands fa-x-twitter",
+      "link": "https://twitter.com/"
+    },
+    {
+      "name": "reddit",
+      "icon": "fa-brands fa-reddit",
+      "link": "https://reddit.com/"
+    }
+  ]
+}
