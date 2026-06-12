@@ -1,6 +1,6 @@
 ######################## default configuration ####################
 # The base URL of your site (required).
-baseURL = "https://grihokon.netlify.app/"
+baseURL = "https://grihokon.top/"
 # Title of your website (required).
 title = "Grihokon"
 # Your theme name
